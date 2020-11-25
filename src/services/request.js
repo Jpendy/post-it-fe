@@ -1,10 +1,10 @@
 const NONBODY_METHODS = ['GET', 'DELETE'];
 
-const request = (path, method, body, token = '') => {
+const request = ({ path, method, body, token } = {}) => {
     // eslint-disable-next-line no-undef
     return fetch(`${process.env.REACT_APP_API_URL}${path}`, {
         method,
-        headers: NONBODY_METHODS.includes(method) ? {} : { 'Content-Type': 'application/json', 'Authorization': token },
+        headers: { 'Content-Type': 'application/json', 'Authorization': token },
         // credentials: 'include',
         body: NONBODY_METHODS.includes(method) ? null : JSON.stringify(body)
     })
@@ -15,7 +15,7 @@ const request = (path, method, body, token = '') => {
         });
 };
 
-export const post = (path, body, token) => request(path, 'POST', body, token);
-export const put = (path, body, token) => request(path, 'PUT', body, token);
-export const get = path => request(path, 'GET');
-export const del = path => request(path, 'DELETE');
+export const post = (path, body, token) => request({ path, method: 'POST', body, token });
+export const put = (path, body, token) => request({ path, method: 'PUT', body, token });
+export const get = path => request({ path, method: 'GET' });
+export const del = (path, token) => request({ path, method: 'DELETE', token });

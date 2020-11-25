@@ -32,7 +32,6 @@ export default function PostsList({ posts, handleVote }) {
                 <p className='category' >{item.category}</p>
                 <img className='image' src={item.image || 'https://placekitten.com/200/300'} style={{ width: '150px' }} alt='' />
                 {item.video && <iframe className='video' title='video' src={item.video} />}
-                <p className='text-body' >{item.body}</p>
             </li>
         )
     })

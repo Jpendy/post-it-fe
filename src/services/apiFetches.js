@@ -17,3 +17,8 @@ export const createPost = (body = {}, token) => {
 export const voteOnPost = (id, body, token) => {
     return put(`/api/v1/posts/vote/${id}`, body, token)
 }
+
+export const deletePost = (id, token) => {
+    console.log(token)
+    return del(`/api/v1/posts/${id}`, token)
+}
