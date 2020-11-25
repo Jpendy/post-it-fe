@@ -6,6 +6,7 @@ import {
 import CreatePost from './components/CreatePost/CreatePost';
 import Header from './components/Header/Header';
 import PrivateRoute from './components/PrivateRoute';
+import Details from './containers/details/Details';
 import FrontPage from './containers/FrontPage/FrontPage';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
@@ -21,6 +22,7 @@ function App() {
             <Route exact path='/' component={FrontPage} />
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/login' component={Login} />
+            <Route exact path='/post-details/:id' component={Details} />
             <PrivateRoute exact path='/create-post' component={CreatePost} />
           </Switch>
         </AuthProvider>

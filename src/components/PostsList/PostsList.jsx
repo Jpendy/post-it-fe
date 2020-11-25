@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useActiveUser } from '../../hooks/AuthContext'
 import './PostsList.css'
 
@@ -9,8 +10,9 @@ export default function PostsList({ posts, handleVote }) {
     const list = posts.map((item, i) => {
         return (
             <li key={i} className='list-item' >
-                <h2 className='post-title' >{item.title}</h2>
-
+                <Link to={`/post-details/${item.id}`} >
+                    <h2 className='post-title' >{item.title}</h2>
+                </Link>
                 {activeUser && <button
                     className='vote-button'
                     onClick={(e) => handleVote(item.id, e)}

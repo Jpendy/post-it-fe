@@ -6,6 +6,10 @@ export const fetchAllPosts = () => {
     return get('/api/v1/posts')
 }
 
+export const getPostById = id => {
+    return get(`/api/v1/posts/${id}`)
+}
+
 export const createPost = (body = {}, token) => {
     return post('/api/v1/posts', body, token)
 }
