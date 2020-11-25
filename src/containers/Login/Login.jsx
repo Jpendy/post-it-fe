@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { useSignup, useAuthError } from '../../hooks/AuthContext'
+import { useLogin, useAuthError } from '../../hooks/AuthContext';
 
-export default function Signup() {
-    const signup = useSignup();
+export default function Login() {
+    const login = useLogin();
     const error = useAuthError();
 
     const [email, setEmail] = useState(null)
@@ -10,14 +10,13 @@ export default function Signup() {
 
     const handleSubmit = e => {
         e.preventDefault()
-
-        signup(email, password)
-
+        login(email, password)
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit} >
+                {error && <p style={{ color: 'red' }} >{`${error.error}`}</p>}
                 <input placeholder='email' onChange={({ target }) => setEmail(target.value)} />
                 <input placeholder='password' onChange={({ target }) => setPassword(target.value)} />
                 <button>submit</button>

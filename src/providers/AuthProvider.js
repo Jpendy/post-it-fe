@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 import { AuthContext } from '../hooks/AuthContext';
 import { fetchLogin, fetchSignup } from '../services/auth';
 
 export default function AuthProvider({ children }) {
+    const history = useHistory()
 
     const [activeUser, setActiveUser] = useState(null)
     const [authError, setAuthError] = useState(null)
@@ -10,7 +12,10 @@ export default function AuthProvider({ children }) {
     const authService = (serviceFn, ...args) => {
         setAuthError(null);
         return serviceFn(...args)
-            .then((user) => setActiveUser(user))
+            .then((user) => {
+                setActiveUser(user)
+                history.push('/')
+            })
             .catch(err => setAuthError(err));
     };
 
