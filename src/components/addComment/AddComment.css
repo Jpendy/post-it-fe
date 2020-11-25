@@ -1,0 +1,31 @@
+.form-box {
+    display: flex;
+    justify-content: center;
+}
+
+.comment-form-area {
+    background: lightblue;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+}
+
+.comment-form {
+    width: 400px;
+    height: 150px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+
+.comment-form > textarea {
+    height: 50px;
+}
+
+.comment-form > button {
+    margin: 5px;
+    width: 80px;
+    align-self: center;
+}

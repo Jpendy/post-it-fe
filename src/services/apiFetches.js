@@ -1,7 +1,6 @@
 import { post, get, del, put } from './request';
 
-// const URL = 
-
+// Post Fetches
 export const fetchAllPosts = () => {
     return get('/api/v1/posts')
 }
@@ -27,6 +26,12 @@ export const deletePost = (id, token) => {
     return del(`/api/v1/posts/${id}`, token)
 }
 
+
+// Comment Fetches
 export const getCommentsByPostId = postId => {
     return get(`/api/v1/comments/${postId}`)
+}
+
+export const postNewComment = (body, token) => {
+    return post(`/api/v1/comments`, body, token)
 }

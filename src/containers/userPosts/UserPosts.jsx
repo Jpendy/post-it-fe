@@ -14,8 +14,6 @@ export default function UserPosts() {
     const [sortType, setSortType] = useState('')
     const { userId } = useParams()
 
-    console.log(activeUser)
-
     useEffect(() => {
         getUserPosts(userId)
             .then(posts => setUserPosts(posts))
@@ -35,7 +33,6 @@ export default function UserPosts() {
         setSortType(e.target.value)
     }
 
-    console.log(userPosts)
     return (
         <div>
             <CategoryFilter posts={userPosts} handleFilterChange={handleFilterChange} />
