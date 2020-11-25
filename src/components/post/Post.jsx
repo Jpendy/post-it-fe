@@ -9,7 +9,9 @@ export default function Post({ post, handleVote, handleDelete }) {
     return (
         <div className='post-list'>
             <div className='list-item'>
+
                 <h2 className='post-title' >{post.title}</h2>
+
                 {activeUser && <button
                     className='vote-button'
                     onClick={(e) => handleVote(post.id, e)}
@@ -27,10 +29,12 @@ export default function Post({ post, handleVote, handleDelete }) {
                  </button>}
 
                 <p className='category' >{post.category}</p>
-                <img className='image' src={post.image || 'https://placekitten.com/200/300'} style={{ width: '150px' }} alt='' />
+                <img className='image' src={post.image || 'https://placekitten.com/204/303'} style={{ width: '150px' }} alt='' />
+
                 {post.video && <iframe className='video' title='video' src={post.video} />}
+
                 <p className='text-body' >{post.body}</p>
-                <button onClick={handleDelete} >Delete Post</button>
+                {activeUser && <button onClick={handleDelete} >Delete Post</button>}
             </div>
         </div>
     )
