@@ -26,3 +26,7 @@ export const deletePost = (id, token) => {
     console.log(token)
     return del(`/api/v1/posts/${id}`, token)
 }
+
+export const getCommentsByPostId = postId => {
+    return get(`/api/v1/comments/${postId}`)
+}

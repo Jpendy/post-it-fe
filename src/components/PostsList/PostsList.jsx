@@ -41,7 +41,7 @@ export default function PostsList({ posts, handleVote, postFilter, sortType }) {
                             <img className='summary-image' src={item.image || 'https://placekitten.com/200/300'} alt='' />
                         </summary>
 
-                        <img className='image' src={item.image || 'https://placekitten.com/200/300'} style={{ width: '150px' }} alt='' />
+                        <img className='image' src={item.image} style={{ width: '150px' }} alt='' />
                         {item.video && <iframe className='video' title='video' src={item.video} />}
                         <p>{item.body}</p>
                     </details>

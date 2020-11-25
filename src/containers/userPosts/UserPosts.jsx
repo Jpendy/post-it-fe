@@ -40,6 +40,12 @@ export default function UserPosts() {
         <div>
             <CategoryFilter posts={userPosts} handleFilterChange={handleFilterChange} />
             <PostSort handleSortChange={handleSortChange} />
+
+            {userPosts.length
+                ? <h3>All Posts By {userPosts[0].post_creator}</h3>
+                : <h3>No Posts</h3>
+            }
+
             <PostsList
                 posts={userPosts}
                 handleVote={handleVote}
