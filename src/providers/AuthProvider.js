@@ -19,14 +19,16 @@ export default function AuthProvider({ children }) {
             .catch(err => setAuthError(err));
     };
 
-
+    const logout = () => {
+        setActiveUser(null)
+    }
 
     const login = (email, password) => authService(fetchLogin, email, password);
 
     const signup = (email, password) => authService(fetchSignup, email, password);
 
     return (
-        <AuthContext.Provider value={{ activeUser, authError, signup, login }} >
+        <AuthContext.Provider value={{ activeUser, authError, signup, login, logout }} >
             {children}
         </AuthContext.Provider>
     )

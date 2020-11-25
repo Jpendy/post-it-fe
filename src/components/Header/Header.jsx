@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useActiveUser } from '../../hooks/AuthContext'
+import { useActiveUser, useLogOut } from '../../hooks/AuthContext'
 
 export default function Header() {
-
+    const logout = useLogOut()
     const activeUser = useActiveUser()
 
     return !activeUser
@@ -11,6 +11,7 @@ export default function Header() {
             <>
                 <Link to='/signup' >Sign Up</Link>
                 <Link to='/login' >Login</Link>
+                <Link to='/' >Front Page</Link>
             </>
         )
 
@@ -18,6 +19,7 @@ export default function Header() {
             <div>
                 <Link to='/' >Front Page</Link>
                 <Link to='/create-post' >New Post</Link>
+                <button onClick={logout} >Log Out</button>
                 <h3>Hello {activeUser.email}</h3>
             </div>
         )

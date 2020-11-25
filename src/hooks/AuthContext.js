@@ -22,6 +22,12 @@ export const useAuthError = () => {
     return authError;
 };
 
+
+export const useLogOut = () => {
+    const { logout } = useContext(AuthContext);
+    return logout;
+};
+
 //   export const useLogout = () => {
 //     const { logout } = useContext(AuthContext);
 //     return logout;
