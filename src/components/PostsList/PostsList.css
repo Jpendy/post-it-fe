@@ -1,0 +1,22 @@
+
+.post-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    list-style: none;
+}
+
+.list-item {
+    margin: 20px;
+    width: 30%;
+    min-width: 300px;
+    border: 1px solid black;
+}
+
+.vote-button {
+    margin: 0px 10px 0px 10px;
+    width: 55px;
+}

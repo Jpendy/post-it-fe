@@ -1,22 +1,42 @@
 import React from 'react'
+import { useActiveUser } from '../../hooks/AuthContext'
+import './PostsList.css'
 
-export default function PostsList({ posts }) {
+export default function PostsList({ posts, handleVote }) {
+
+    const activeUser = useActiveUser()
 
     const list = posts.map((item, i) => {
         return (
-            <li key={i} >
-                <h2>{item.title}</h2>
-                <p>{item.vote_score}</p>
-                <p>{item.category}</p>
-                <img src={item.image || 'https://placekitten.com/200/300'} style={{ width: '150px' }} alt='' />
-                {item.video && <iframe title='video' src={item.video} />}
-                <p>{item.body}</p>
+            <li key={i} className='list-item' >
+                <h2 className='post-title' >{item.title}</h2>
+
+                {activeUser && <button
+                    className='vote-button'
+                    onClick={(e) => handleVote(item.id, e)}
+                    value={1} >
+                    Like
+                </button>}
+
+                <span className='vote-score' > {item.vote_score} </span>
+
+                {activeUser && <button
+                    className='vote-button'
+                    onClick={(e) => handleVote(item.id, e)}
+                    value={-1}
+                >Dislike
+                 </button>}
+
+                <p className='category' >{item.category}</p>
+                <img className='image' src={item.image || 'https://placekitten.com/200/300'} style={{ width: '150px' }} alt='' />
+                {item.video && <iframe className='video' title='video' src={item.video} />}
+                <p className='text-body' >{item.body}</p>
             </li>
         )
     })
 
     return (
-        <ul>
+        <ul className='post-list' >
             {list}
         </ul>
     )

@@ -16,5 +16,6 @@ const request = (path, method, body, token = '') => {
 };
 
 export const post = (path, body, token) => request(path, 'POST', body, token);
+export const put = (path, body, token) => request(path, 'PUT', body, token);
 export const get = path => request(path, 'GET');
 export const del = path => request(path, 'DELETE');
