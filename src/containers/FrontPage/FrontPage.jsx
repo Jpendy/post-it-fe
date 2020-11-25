@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CategoryFilter from '../../components/categoryFilter/CategoryFilter';
 import PostsList from '../../components/PostsList/PostsList'
+import PostSort from '../../components/postSort/PostSort';
 import { useActiveUser } from '../../hooks/AuthContext'
 import { fetchAllPosts, voteOnPost } from '../../services/apiFetches'
 
@@ -9,6 +10,7 @@ export default function FrontPage() {
 
     const [posts, setPosts] = useState([])
     const [postFilter, setPostFilter] = useState('')
+    const [sortType, setSortType] = useState('')
 
     useEffect(() => {
         fetchAllPosts()
@@ -25,10 +27,20 @@ export default function FrontPage() {
         setPostFilter(e.target.value)
     }
 
+    const handleSortChange = e => {
+        setSortType(e.target.value)
+    }
+
     return (
         <div>
             <CategoryFilter posts={posts} handleFilterChange={handleFilterChange} />
-            <PostsList posts={posts} handleVote={handleVote} postFilter={postFilter} />
+            <PostSort handleSortChange={handleSortChange} />
+            <PostsList
+                posts={posts}
+                handleVote={handleVote}
+                postFilter={postFilter}
+                sortType={sortType}
+            />
         </div>
     )
 }

@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import { useActiveUser } from '../../hooks/AuthContext'
 import './PostsList.css'
 
-export default function PostsList({ posts, handleVote, postFilter }) {
+export default function PostsList({ posts, handleVote, postFilter, sortType }) {
 
     const activeUser = useActiveUser()
 
     const list = posts
         .filter(({ category }) => postFilter ? category === postFilter : true)
-        .sort((a, b) => b.vote_score - a.vote_score)
+        .sort((a, b) => b[sortType] - a[sortType])
         .map((item, i) => {
             return (
                 <li key={i} className='list-item' >
