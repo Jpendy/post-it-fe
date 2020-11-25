@@ -17,6 +17,7 @@ export default function Header() {
         : (
             <div>
                 <Link to='/' >Front Page</Link>
+                <Link to='/create-post' >New Post</Link>
                 <h3>Hello {activeUser.email}</h3>
             </div>
         )

@@ -7,7 +7,9 @@ export default function PostsList({ posts }) {
             <li key={i} >
                 <h2>{item.title}</h2>
                 <p>{item.vote_score}</p>
-                <img src={item.image} alt='' />
+                <p>{item.category}</p>
+                <img src={item.image || 'https://placekitten.com/200/300'} style={{ width: '150px' }} alt='' />
+                {item.video && <iframe title='video' src={item.video} />}
                 <p>{item.body}</p>
             </li>
         )
