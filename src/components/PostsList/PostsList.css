@@ -10,8 +10,10 @@
 }
 
 .list-item {
+    background: lightblue;
     margin: 20px;
-    width: 30%;
+    border-radius: 10px;
+    width: 70%;
     min-width: 300px;
     border: 1px solid black;
 }
@@ -20,3 +22,14 @@
     margin: 0px 10px 0px 10px;
     width: 55px;
 }
+
+summary {
+    list-style: none;
+}
+
+.summary-image {
+    width: 50px;
+    cursor: pointer;
+}
+
+summary::-webkit-details-marker {display: none; }

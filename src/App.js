@@ -11,6 +11,7 @@ import FrontPage from './containers/FrontPage/FrontPage';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
 import AuthProvider from './providers/AuthProvider';
+import './App.css'
 
 function App() {
   return (

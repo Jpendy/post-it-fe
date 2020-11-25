@@ -12,9 +12,11 @@ export default function PostsList({ posts, handleVote }) {
         .map((item, i) => {
             return (
                 <li key={i} className='list-item' >
+
                     <Link to={`/post-details/${item.id}`} >
                         <h2 className='post-title' >{item.title}</h2>
                     </Link>
+
                     {activeUser && <button
                         className='vote-button'
                         onClick={(e) => handleVote(item.id, e)}
@@ -32,8 +34,18 @@ export default function PostsList({ posts, handleVote }) {
                  </button>}
 
                     <p className='category' >{item.category}</p>
-                    <img className='image' src={item.image || 'https://placekitten.com/200/300'} style={{ width: '150px' }} alt='' />
-                    {item.video && <iframe className='video' title='video' src={item.video} />}
+
+                    <details>
+                        <summary>
+                            <img className='summary-image' src={item.image || 'https://placekitten.com/200/300'} alt='' />
+                        </summary>
+
+                        <img className='image' src={item.image || 'https://placekitten.com/200/300'} style={{ width: '150px' }} alt='' />
+                        {item.video && <iframe className='video' title='video' src={item.video} />}
+                        <p>{item.body}</p>
+                    </details>
+                    <p>Posted by {item.post_creator}</p>
+
                 </li>
             )
         })
