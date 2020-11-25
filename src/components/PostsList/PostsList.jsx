@@ -45,12 +45,12 @@ export default function PostsList({ posts, handleVote, postFilter, sortType }) {
                         {item.video && <iframe className='video' title='video' src={item.video} />}
                         <p>{item.body}</p>
                     </details>
-                    <p>Posted by {item.post_creator}</p>
+                    <p>Posted by <Link to={`/user-posts/${item.owner_id}`} >{item.post_creator}</Link></p>
+                    {activeUser?.email === item.post_creator && <button>Delete Post</button>}
 
                 </li>
             )
         })
-
 
     return (
         <ul className='post-list' >

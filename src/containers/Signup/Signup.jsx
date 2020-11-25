@@ -17,7 +17,7 @@ export default function Signup() {
         <div>
             <form onSubmit={handleSubmit} >
                 {error && <p style={{ color: 'red' }} >{`${error.error}`}</p>}
-                <input placeholder='email' onChange={({ target }) => setEmail(target.value)} />
+                <input placeholder='username' onChange={({ target }) => setEmail(target.value)} />
                 <input placeholder='password' onChange={({ target }) => setPassword(target.value)} />
                 <button>submit</button>
             </form>

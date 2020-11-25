@@ -10,6 +10,10 @@ export const getPostById = id => {
     return get(`/api/v1/posts/${id}`)
 }
 
+export const getUserPosts = userId => {
+    return get(`/api/v1/posts/user-posts/${userId}`)
+}
+
 export const createPost = (body = {}, token) => {
     return post('/api/v1/posts', body, token)
 }

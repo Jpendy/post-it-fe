@@ -9,10 +9,15 @@ export default function AuthProvider({ children }) {
     const [activeUser, setActiveUser] = useState(null)
     const [authError, setAuthError] = useState(null)
 
+    useEffect(() => {
+        setActiveUser(JSON.parse(localStorage.getItem('USER')) || null)
+    }, [])
+
     const authService = (serviceFn, ...args) => {
         setAuthError(null);
         return serviceFn(...args)
             .then((user) => {
+                localStorage.setItem('USER', JSON.stringify(user))
                 setActiveUser(user)
                 history.push('/')
             })
@@ -20,6 +25,7 @@ export default function AuthProvider({ children }) {
     };
 
     const logout = () => {
+        localStorage.removeItem('USER')
         setActiveUser(null)
     }
 

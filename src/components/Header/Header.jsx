@@ -20,6 +20,8 @@ export default function Header() {
             <div className='header-body' >
                 <h3>Hello {activeUser.email}</h3>
                 <Link to='/' >Front Page</Link>
+                <Link to={`/user-posts/${activeUser.id}`} >My Posts</Link>
+
                 <Link to='/create-post' >New Post</Link>
                 <button onClick={logout} >Log Out</button>
             </div>
