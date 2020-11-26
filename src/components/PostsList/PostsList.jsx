@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useActiveUser } from '../../hooks/AuthContext'
 import './PostsList.css'
 
-export default function PostsList({ posts, handleVote, postFilter, sortType }) {
+export default function PostsList({ posts, handleVote, postFilter, sortType, handleVoteClick, voteHistory }) {
 
     const activeUser = useActiveUser()
 
@@ -11,6 +11,9 @@ export default function PostsList({ posts, handleVote, postFilter, sortType }) {
         .filter(({ category }) => postFilter ? category === postFilter : true)
         .sort((a, b) => b[sortType] - a[sortType])
         .map((item, i) => {
+
+            const currentVote = voteHistory.find(vote => vote.post_id === item.id && vote.owner_id === activeUser?.id)
+
             return (
                 <li key={i} className='list-item' >
 
@@ -19,18 +22,22 @@ export default function PostsList({ posts, handleVote, postFilter, sortType }) {
                     </Link>
 
                     {activeUser && <button
+                        style={{ boxShadow: currentVote?.vote === 1 && '2px 2px 8px orangered' }}
                         className='vote-button'
-                        onClick={(e) => handleVote(item.id, e)}
-                        value={1} >
+                        // disabled={loading}
+                        onClick={(e) => handleVoteClick(item.id, e)}
+                        value='upvote' >
                         Like
                 </button>}
 
                     <span className='vote-score' > {item.vote_score} </span>
 
                     {activeUser && <button
+                        style={{ boxShadow: currentVote?.vote === -1 && '2px 2px 8px blue' }}
                         className='vote-button'
-                        onClick={(e) => handleVote(item.id, e)}
-                        value={-1}
+                        // disabled={loading}
+                        onClick={(e) => handleVoteClick(item.id, e)}
+                        value='downvote'
                     >Dislike
                  </button>}
 

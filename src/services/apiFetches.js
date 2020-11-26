@@ -35,3 +35,17 @@ export const getCommentsByPostId = postId => {
 export const postNewComment = (body, token) => {
     return post(`/api/v1/comments`, body, token)
 }
+
+
+// Vote Fetches 
+export const getUserVoteHistory = token => {
+    return get('/api/v1/votes', token)
+}
+
+export const postNewVoteHistory = (body, token) => {
+    return post('/api/v1/votes', body, token)
+}
+
+export const updateVoteHistory = (id, body, token) => {
+    return put(`/api/v1/votes/${id}`, body, token)
+}
