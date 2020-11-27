@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useActiveUser } from '../../hooks/AuthContext'
 import './PostsList.css'
 
-export default function PostsList({ posts, handleVote, postFilter, sortType, handleVoteClick, voteHistory }) {
+export default function PostsList({ posts, postFilter, sortType, handleVoteClick, voteHistory }) {
 
     const activeUser = useActiveUser()
 
@@ -53,7 +53,7 @@ export default function PostsList({ posts, handleVote, postFilter, sortType, han
                         <p>{item.body}</p>
                     </details>
                     <p>Posted by <Link to={`/user-posts/${item.owner_id}`} >{item.post_creator}</Link></p>
-                    {activeUser?.email === item.post_creator && <button>Delete Post</button>}
+                    {activeUser?.email === item.post_creator && <button className='delete-button' >Delete Post</button>}
 
                 </li>
             )

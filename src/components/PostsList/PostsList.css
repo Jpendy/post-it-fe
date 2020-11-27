@@ -34,4 +34,9 @@ summary {
     cursor: pointer;
 }
 
+.delete-button {
+    margin: 10px;
+    cursor: pointer;
+}
+
 summary::-webkit-details-marker {display: none; }

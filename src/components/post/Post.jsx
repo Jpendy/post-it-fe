@@ -33,7 +33,7 @@ export default function Post({ post, handleVote, handleDelete }) {
                 {post.video && <iframe className='video' title='video' src={post.video} />}
 
                 <p className='text-body' >{post.body}</p>
-                {activeUser?.email === post.post_creator && <button onClick={handleDelete} >Delete Post</button>}
+                {activeUser?.email === post.post_creator && <button onClick={handleDelete} className='delete-button' >Delete Post</button>}
             </div>
         </div>
     )

@@ -6,33 +6,43 @@ import { voteOnPost, getPostById, deletePost, getCommentsByPostId, postNewCommen
 import Post from '../../components/post/Post'
 import Comments from '../../components/comments/Comments'
 import AddComment from '../../components/addComment/AddComment'
+import usePosts from '../../hooks/usePosts'
+import PostsList from '../../components/PostsList/PostsList'
 
 export default function Details() {
     const activeUser = useActiveUser()
     const { id } = useParams()
     const history = useHistory();
-    const [post, setPost] = useState([])
+    // const [post, setPost] = useState([])
     const [comments, setComments] = useState([])
     const [commentTitle, setCommentTitle] = useState('')
     const [commentBody, setCommentBody] = useState('')
 
+    const { posts, voteHistory, handleVoteClick } = usePosts('SINGLE_POST')
+
     useEffect(async () => {
-        const [post] = await getPostById(id)
-        setPost(post)
+        // const [post] = await getPostById(id)
+        // setPost(post)
 
         const comments = await getCommentsByPostId(id)
         setComments(comments)
     }, [])
 
-    const handleVote = (id, e) => {
-        voteOnPost(id, { vote: +e.target.value }, activeUser.token)
-            .then(() => getPostById(id))
-            .then(([post]) => setPost(post))
-    }
+    // const handleVote = (id, e) => {
+    //     voteOnPost(id, { vote: +e.target.value }, activeUser.token)
+    //         .then(() => getPostById(id))
+    //         .then(([post]) => setPost(post))
+    // }
 
     const handleDeletePost = () => {
-        deletePost(id, activeUser.token)
-        history.push('/')
+        const confirmation = window.confirm('Are you sure you want to delete this post?')
+
+        if (confirmation) {
+
+            deletePost(id, activeUser.token)
+            history.push('/')
+        }
+        else return
     }
 
     const handleCommentSubmit = async e => {
@@ -55,7 +65,15 @@ export default function Details() {
 
     return (
         <div>
-            <Post post={post} handleDelete={handleDeletePost} handleVote={handleVote} />
+            {/* <Post post={posts} handleDelete={handleDeletePost} handleVote={handleVoteClick} /> */}
+
+            <PostsList
+                posts={posts}
+                handleVoteClick={handleVoteClick}
+                // postFilter={postFilter}
+                // sortType={sortType}
+                voteHistory={voteHistory}
+            />
 
             {activeUser && <AddComment
                 handleCommentSubmit={handleCommentSubmit}
