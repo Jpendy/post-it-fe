@@ -3,7 +3,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import CreatePost from './components/CreatePost/CreatePost';
+import CreatePost from './containers/CreatePost/CreatePost';
 import Header from './components/Header/Header';
 import PrivateRoute from './components/PrivateRoute';
 import Details from './containers/details/Details';

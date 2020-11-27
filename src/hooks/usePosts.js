@@ -8,13 +8,12 @@ export default function usePosts(postCommand) {
     const { userId } = useParams()
     const { id } = useParams()
 
-    console.log(id)
-
     const activeUser = useActiveUser();
 
     const [posts, setPosts] = useState([])
     const [voteHistory, setVoteHistory] = useState([])
     const [loading, setLoading] = useState(false)
+    // const [upVoteStyle, setUpVoteStyle] = useState(null)
 
     const postFetchFn = () => {
         return postCommand === 'ALL_POSTS' ? fetchAllPosts()
@@ -22,8 +21,6 @@ export default function usePosts(postCommand) {
                 : postCommand === 'SINGLE_POST' ? getPostById(id)
                     : null
     }
-
-    console.log(posts)
 
     useEffect(() => {
         setLoading(true)
@@ -42,10 +39,11 @@ export default function usePosts(postCommand) {
         setLoading(true)
 
         const voteType = e.target.value;
-
         const currentVote = voteHistory.find(vote => vote.post_id === id && vote.owner_id === activeUser.id)
 
         if (!currentVote) {
+            // setUpVoteStyle(voteType === 'upvote' ? 'upvote' : 'downvote')
+
             await voteOnPost(id, { vote: voteType === 'upvote' ? 1 : -1 }, activeUser.token)
             setPosts(await postFetchFn())
 
@@ -54,6 +52,8 @@ export default function usePosts(postCommand) {
         }
 
         else if (currentVote.vote === 0) {
+            // setUpVoteStyle(voteType === 'upvote' ? 'upvote' : 'downvote')
+
             await voteOnPost(id, { vote: voteType === 'upvote' ? 1 : -1 }, activeUser?.token)
             setPosts(await postFetchFn())
 
@@ -62,6 +62,8 @@ export default function usePosts(postCommand) {
         }
 
         else if (currentVote.vote === -1) {
+            // setUpVoteStyle(voteType === 'upvote' ? 'upvote' : null)
+
             await voteOnPost(id, { vote: voteType === 'upvote' ? 2 : 1 }, activeUser?.token)
             setPosts(await postFetchFn())
 
@@ -70,6 +72,8 @@ export default function usePosts(postCommand) {
         }
 
         else {
+            // setUpVoteStyle(voteType === 'upvote' ? null : 'downvote')
+
             await voteOnPost(id, { vote: voteType === 'upvote' ? -1 : -2 }, activeUser?.token)
             setPosts(await postFetchFn())
 
@@ -85,6 +89,7 @@ export default function usePosts(postCommand) {
     return {
         posts,
         voteHistory,
+        // upVoteStyle,
         handleVoteClick,
     }
 }

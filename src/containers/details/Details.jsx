@@ -13,7 +13,6 @@ export default function Details() {
     const activeUser = useActiveUser()
     const { id } = useParams()
     const history = useHistory();
-    // const [post, setPost] = useState([])
     const [comments, setComments] = useState([])
     const [commentTitle, setCommentTitle] = useState('')
     const [commentBody, setCommentBody] = useState('')
@@ -21,18 +20,11 @@ export default function Details() {
     const { posts, voteHistory, handleVoteClick } = usePosts('SINGLE_POST')
 
     useEffect(async () => {
-        // const [post] = await getPostById(id)
-        // setPost(post)
 
         const comments = await getCommentsByPostId(id)
         setComments(comments)
     }, [])
 
-    // const handleVote = (id, e) => {
-    //     voteOnPost(id, { vote: +e.target.value }, activeUser.token)
-    //         .then(() => getPostById(id))
-    //         .then(([post]) => setPost(post))
-    // }
 
     const handleDeletePost = () => {
         const confirmation = window.confirm('Are you sure you want to delete this post?')

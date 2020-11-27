@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useActiveUser } from '../../hooks/AuthContext'
 import './PostsList.css'
 
-export default function PostsList({ posts, postFilter, sortType, handleVoteClick, voteHistory }) {
+export default function PostsList({ posts, postFilter, sortType, handleVoteClick, voteHistory, upVoteStyle }) {
 
     const activeUser = useActiveUser()
 
@@ -22,7 +22,10 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
                     </Link>
 
                     {activeUser && <button
-                        style={{ boxShadow: currentVote?.vote === 1 && '2px 2px 8px orangered' }}
+                        style={{
+                            boxShadow: currentVote?.vote === 1 && '2px 2px 8px orangered'
+                            // boxShadow: (upVoteStyle === 'upvote' || currentVote?.vote === 1) && '2px 2px 8px orangered'
+                        }}
                         className='vote-button'
                         // disabled={loading}
                         onClick={(e) => handleVoteClick(item.id, e)}
@@ -33,7 +36,10 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
                     <span className='vote-score' > {item.vote_score} </span>
 
                     {activeUser && <button
-                        style={{ boxShadow: currentVote?.vote === -1 && '2px 2px 8px blue' }}
+                        style={{
+                            boxShadow: currentVote?.vote === -1 && '2px 2px 8px blue'
+                            // boxShadow: (upVoteStyle === 'downvote' || currentVote?.vote === -1) && '2px 2px 8px blue'
+                        }}
                         className='vote-button'
                         // disabled={loading}
                         onClick={(e) => handleVoteClick(item.id, e)}
@@ -45,7 +51,7 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
 
                     <details>
                         <summary>
-                            <img className='summary-image' src={item.image || 'https://placekitten.com/200/300'} alt='' />
+                            <img className='summary-image' src={item.image || './leo.jpg'} alt='' />
                         </summary>
 
                         <img className='image' src={item.image} style={{ width: '150px' }} alt='' />
