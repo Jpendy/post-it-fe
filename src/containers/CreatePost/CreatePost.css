@@ -1,0 +1,32 @@
+
+.create-post-form-area {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-post-form-textarea {
+    margin: 5px;
+    height: 100px;
+}
+
+.create-post-form {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create-post-form-input {
+    height: 25px;
+    margin: 5px;
+}
+
+.create-post-button {
+    margin-top: 5px;
+    width: 60px;
+    align-self: center;
+
+}
