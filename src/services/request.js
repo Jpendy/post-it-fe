@@ -1,6 +1,6 @@
 const NONBODY_METHODS = ['GET', 'DELETE'];
 
-const localUrl = 'http://localhost:3001'
+// const localUrl = 'http://localhost:3001'
 //process.env.REACT_APP_API_URL
 
 const request = ({ path, method, body, token } = {}) => {
