@@ -1,4 +1,4 @@
-import { post, get } from './request';
+import { post } from './request';
 
 export const fetchSignup = (email, password) => {
     return post('/auth/signup', { email, password });
