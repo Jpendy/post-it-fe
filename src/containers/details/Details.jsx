@@ -39,11 +39,9 @@ export default function Details() {
     //     else return
     // }
 
-
     const handleSortChange = e => {
         setSortType(e.target.value)
     }
-
 
     return (
         <div>
