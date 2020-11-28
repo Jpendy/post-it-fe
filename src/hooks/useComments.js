@@ -85,6 +85,7 @@ export default function useComments(postId) {
     }
 
     const handleCommentSubmit = async e => {
+
         e.preventDefault()
 
         const newComment = {

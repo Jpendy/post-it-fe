@@ -5,7 +5,7 @@ const localUrl = 'http://localhost:3001'
 
 const request = ({ path, method, body, token } = {}) => {
     // eslint-disable-next-line no-undef
-    return fetch(`${localUrl}${path}`, {
+    return fetch(`${process.env.REACT_APP_API_URL}${path}`, {
         method,
         headers: { 'Content-Type': 'application/json', 'Authorization': token },
         // credentials: 'include',
