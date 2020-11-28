@@ -1,6 +1,9 @@
+* {
+    box-sizing: border-box;
+}
 
 .create-post-form-area {
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,4 +32,28 @@
     width: 60px;
     align-self: center;
     cursor: pointer;
+}
+
+.create-post-preview-area {
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid black;
+    background: #ffffff;
+    width: 40%;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-post-preview-area > img {
+    width: 400px;
+}
+
+.create-post-preview-area > p {
+    padding: 5px;
+    width: 400px;
+    border: 1px solid lightgrey;
+    text-align: center;
 }
