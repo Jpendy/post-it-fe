@@ -15,26 +15,37 @@ export default function Comments({ comments, handleCommentVoteClick, commentVote
             return (
                 <li key={i} className='comment' >
 
-                    {activeUser && <button
-                        style={{
-                            boxShadow: currentVote?.vote === 1 && '2px 2px 8px orangered'
-                        }}
-                        className='vote-button'
-                        onClick={(e) => handleCommentVoteClick(id, e)}
-                        value='upvote' >
-                        Like
-                </button>}
-                    <span>{vote_score}</span>
+                    <div className='vote-area' >
+                        {activeUser && <img
+                            src='/transparent-upvote.png'
+                            style={{
+                                filter: currentVote?.vote === 1 && 'drop-shadow(0px 0px 5px lime)'
+                                // boxShadow: currentVote?.vote === 1 && '2px 2px 8px orangered'
+                            }}
+                            className='vote-button'
+                            // disabled={loading}
+                            onClick={(e) => handleCommentVoteClick(id, e)}
+                            data-vote-type='upvote'
+                            alt=''
+                        />
+                        }
 
-                    {activeUser && <button
-                        style={{
-                            boxShadow: currentVote?.vote === -1 && '2px 2px 8px blue'
-                        }}
-                        className='vote-button'
-                        onClick={(e) => handleCommentVoteClick(id, e)}
-                        value='downvote'
-                    >Dislike
-                 </button>}
+                        <span className='vote-score' > {vote_score} </span>
+
+                        {activeUser && <img
+                            src='/transparent-downvote.png'
+                            style={{
+                                filter: currentVote?.vote === -1 && 'drop-shadow(0px 0px 5px blue)'
+                                // boxShadow: currentVote?.vote === -1 && '2px 2px 8px blue'
+                            }}
+                            className='vote-button'
+                            // disabled={loading}
+                            onClick={(e) => handleCommentVoteClick(id, e)}
+                            data-vote-type='downvote'
+                            alt=''
+                        />
+                        }
+                    </div>
 
                     <h4>{title}</h4>
                     <p>{body}</p>
