@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useHistory } from 'react-router-dom';
-import { useActiveUser } from '../../hooks/AuthContext'
+import { useActiveUser, useSignup } from '../../hooks/AuthContext'
+import usePosts from '../../hooks/usePosts';
 import { createPost } from '../../services/apiFetches'
+import './CreatePost.css'
 
 export default function CreatePost() {
     const activeUser = useActiveUser();
@@ -12,7 +14,13 @@ export default function CreatePost() {
     const [body, setBody] = useState('')
     const [image, setImage] = useState('')
     const [video, setVideo] = useState('')
+    const [createCategory, setCreateCategory] = useState(false)
 
+    const categoryInput = useRef()
+
+    const { posts } = usePosts('ALL_POSTS');
+
+    console.log(category)
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -20,16 +28,35 @@ export default function CreatePost() {
         history.push('/')
     }
 
+    const handleClick = async () => {
+        await setCreateCategory(createCategory ? false : true)
+        !createCategory && categoryInput.current.focus();
+    }
+
     return (
-        <div>
-            create post
-            <form onSubmit={handleSubmit} >
-                <input placeholder='title' onChange={e => setTitle(e.target.value)} />
-                <input placeholder='category' style={{ display: 'block' }} onChange={e => setCategory(e.target.value)} />
-                <textarea placeholder='text body' style={{ display: 'block' }} onChange={e => setBody(e.target.value)} />
-                <input placeholder='image url - optional' style={{ display: 'block' }} onChange={e => setImage(e.target.value)} />
-                <input placeholder='video url - optional' style={{ display: 'block' }} onChange={e => setVideo(e.target.value)} />
-                <button>Submit</button>
+        <div className='create-post-form-area' >
+            <h3>Create Post</h3>
+
+            <form onSubmit={handleSubmit} className='create-post-form' >
+
+                <input className='create-post-form-input' placeholder='title' onChange={e => setTitle(e.target.value)} />
+
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    {
+                        createCategory
+                            ? <input ref={categoryInput} style={{ width: '500px' }} className='create-post-form-input' placeholder='category' style={{ display: 'block' }} onChange={e => setCategory(e.target.value)} />
+                            : <select style={{ width: '387px' }} className='create-post-form-input' onChange={e => setCategory(e.target.value)}>
+                                <option value='none' >choose category</option>
+                                {posts.map((item, i) => <option key={i} >{item.category}</option>)}
+                            </select>
+                    }
+                    <span><button style={{ height: '25px' }} type='button' onClick={handleClick} >{createCategory ? 'Choose Category' : 'Add Category'}</button></span>
+                </div>
+
+                <input className='create-post-form-input' placeholder='image url - optional' style={{ display: 'block' }} onChange={e => setImage(e.target.value)} />
+                <input className='create-post-form-input' placeholder='video url - optional' style={{ display: 'block' }} onChange={e => setVideo(e.target.value)} />
+                <textarea className='create-post-form-textarea' placeholder='text body' style={{ display: 'block' }} onChange={e => setBody(e.target.value)} />
+                <button className='create-post-button' >Submit</button>
             </form>
         </div>
     )

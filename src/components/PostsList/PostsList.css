@@ -17,6 +17,12 @@
     border: 1px solid black;
 }
 
+.vote-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .vote-button {
     margin: 0px 10px 0px 10px;
     width: 55px;
@@ -27,9 +33,12 @@
 
 summary {
     list-style: none;
+    width: 6%;
+    margin: 20px auto 0px auto;
 }
 
 .summary-image {
+    margin: 15px;
     width: 50px;
     cursor: pointer;
 }

@@ -38,7 +38,7 @@ export default function useComments(postId) {
         if (loading) return
         setLoading(true)
 
-        const voteType = e.target.value;
+        const voteType = e.target.dataset.voteType;
         const currentVote = commentVoteHistory.find(vote => vote.comment_id === id && vote.owner_id === activeUser.id)
 
         if (!currentVote) {

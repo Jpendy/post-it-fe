@@ -38,7 +38,10 @@ export default function usePosts(postCommand) {
         if (loading) return
         setLoading(true)
 
-        const voteType = e.target.value;
+        console.log(e.target.dataset.voteType)
+        // console.log(e.target['data-vote-type'])
+
+        const voteType = e.target.dataset.voteType;
         const currentVote = voteHistory.find(vote => vote.post_id === id && vote.owner_id === activeUser.id)
 
         if (!currentVote) {
