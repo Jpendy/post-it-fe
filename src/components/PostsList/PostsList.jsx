@@ -59,6 +59,10 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
                         <p>{item.body}</p>
                     </details>
                     <p>Posted by <Link to={`/user-posts/${item.owner_id}`} >{item.post_creator}</Link></p>
+
+                    <Link to={`/post-details/${item.id}`} style={{ textDecoration: 'none' }} >
+                        <p>Comments: {item.comment_count}</p>
+                    </Link>
                     {/* {activeUser?.email === item.post_creator && <button className='delete-button' >Delete Post</button>} */}
 
                 </li>
