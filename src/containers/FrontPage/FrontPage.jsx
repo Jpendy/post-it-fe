@@ -11,6 +11,7 @@ export default function FrontPage() {
 
     const { posts, voteHistory, handleVoteClick } = usePosts('ALL_POSTS')
 
+    console.log(posts)
     const handleFilterChange = e => {
         setPostFilter(e.target.value)
     }

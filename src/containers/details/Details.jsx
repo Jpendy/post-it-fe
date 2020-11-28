@@ -1,27 +1,31 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useActiveUser } from '../../hooks/AuthContext'
-import { getCommentsByPostId, postNewComment } from '../../services/apiFetches'
 import Comments from '../../components/comments/Comments'
 import AddComment from '../../components/addComment/AddComment'
 import usePosts from '../../hooks/usePosts'
 import PostsList from '../../components/PostsList/PostsList'
+import useComments from '../../hooks/useComments'
+import PostSort from '../../components/postSort/PostSort'
 
 export default function Details() {
     const activeUser = useActiveUser()
     const { id } = useParams()
-    const [comments, setComments] = useState([])
-    const [commentTitle, setCommentTitle] = useState('')
-    const [commentBody, setCommentBody] = useState('')
+
+    const [sortType, setSortType] = useState('vote_score')
+    // const history = useHistory();
 
     const { posts, voteHistory, handleVoteClick } = usePosts('SINGLE_POST')
 
-    useEffect(async () => {
-
-        const comments = await getCommentsByPostId(id)
-        setComments(comments)
-    }, [])
+    const { comments,
+        commentTitle,
+        commentBody,
+        setCommentBody,
+        setCommentTitle,
+        handleCommentSubmit,
+        handleCommentVoteClick,
+        commentVoteHistory } = useComments(id)
 
 
     // const handleDeletePost = () => {
@@ -35,28 +39,12 @@ export default function Details() {
     //     else return
     // }
 
-    const handleCommentSubmit = async e => {
-        e.preventDefault()
-
-        const newComment = {
-            post_id: id,
-            title: commentTitle,
-            body: commentBody
-        }
-
-        await postNewComment(newComment, activeUser.token)
-
-        const comments = await getCommentsByPostId(id)
-        setComments(comments)
-
-        setCommentTitle('')
-        setCommentBody('')
+    const handleSortChange = e => {
+        setSortType(e.target.value)
     }
 
     return (
         <div>
-            {/* <Post post={posts} handleDelete={handleDeletePost} handleVote={handleVoteClick} /> */}
-
             <PostsList
                 posts={posts}
                 handleVoteClick={handleVoteClick}
@@ -72,8 +60,17 @@ export default function Details() {
                 commentTitle={commentTitle}
                 commentBody={commentBody}
             />}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <PostSort handleSortChange={handleSortChange} />
+            </div>
 
-            <Comments comments={comments} />
+            <Comments
+                comments={comments}
+                commentVoteHistory={commentVoteHistory}
+                handleCommentVoteClick={handleCommentVoteClick}
+
+                sortType={sortType}
+            />
         </div>
     )
 }
