@@ -9,7 +9,7 @@ export default function FrontPage() {
     const [postFilter, setPostFilter] = useState('')
     const [sortType, setSortType] = useState('vote_score')
 
-    const { posts, voteHistory, upVoteStyle, handleVoteClick } = usePosts('ALL_POSTS')
+    const { posts, voteHistory, handleVoteClick } = usePosts('ALL_POSTS')
 
     const handleFilterChange = e => {
         setPostFilter(e.target.value)
