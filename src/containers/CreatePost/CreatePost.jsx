@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useHistory } from 'react-router-dom';
-import { useActiveUser, useSignup } from '../../hooks/AuthContext'
+import { useActiveUser } from '../../hooks/AuthContext'
 import usePosts from '../../hooks/usePosts';
 import { createPost } from '../../services/apiFetches'
 import './CreatePost.css'
@@ -44,13 +44,13 @@ export default function CreatePost() {
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     {
                         createCategory
-                            ? <input ref={categoryInput} style={{ width: '500px' }} className='create-post-form-input' placeholder='category' style={{ display: 'block' }} onChange={e => setCategory(e.target.value)} />
+                            ? <input ref={categoryInput} style={{ width: '200px' }} className='create-post-form-input' placeholder='category' onChange={e => setCategory(e.target.value)} />
                             : <select style={{ width: '387px' }} className='create-post-form-input' onChange={e => setCategory(e.target.value)}>
                                 <option value='none' >choose category</option>
                                 {posts.map((item, i) => <option key={i} >{item.category}</option>)}
                             </select>
                     }
-                    <span><button style={{ height: '25px' }} type='button' onClick={handleClick} >{createCategory ? 'Choose Category' : 'Add Category'}</button></span>
+                    <span><button style={{ height: '25px', cursor: 'pointer' }} type='button' onClick={handleClick} >{createCategory ? 'Choose Category' : 'Add Category'}</button></span>
                 </div>
 
                 <input className='create-post-form-input' placeholder='image url - optional' style={{ display: 'block' }} onChange={e => setImage(e.target.value)} />

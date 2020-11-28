@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useActiveUser } from '../../hooks/AuthContext'
 import Comments from '../../components/comments/Comments'
 import AddComment from '../../components/addComment/AddComment'
