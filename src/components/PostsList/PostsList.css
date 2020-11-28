@@ -1,5 +1,12 @@
 
+.post-list-area {
+    width: 100%;
+   margin: auto;
+   text-align: center;
+}
+
 .post-list {
+    margin: auto;
     width: 100%;
     display: flex;
     flex-direction: column;

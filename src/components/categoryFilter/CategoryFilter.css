@@ -1,0 +1,27 @@
+.category-buttons-area {
+    margin: 10px auto 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-button {
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px;
+    background: lightblue;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: 0.2s
+}
+
+.category-button:hover {
+    background: rgb(243, 169, 135);
+    box-shadow: 2px 2px 6px;
+}
+
+.category-dropdown {
+    margin: 10px;
+    height: 30px;
+}

@@ -89,8 +89,10 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
         })
 
     return (
-        <ul className='post-list' >
-            {list}
-        </ul>
+        <div className='post-list-area' >
+            <ul className='post-list' >
+                {list}
+            </ul>
+        </div>
     )
 }
