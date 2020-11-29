@@ -54,7 +54,7 @@ export default function CreatePost() {
                             createCategory
                                 ? <input ref={categoryInput} minLength={3} maxLength={15} style={{ width: '200px' }} className='create-post-form-input' placeholder='category' onChange={e => setCategory(e.target.value)} />
                                 : <select style={{ width: '387px' }} className='create-post-form-input' onChange={e => setCategory(e.target.value)}>
-                                    <option value='none' >category - required</option>
+                                    <option selected disabled hidden >category - required</option>
                                     {categories.map((category, i) => <option key={i} >{category}</option>)}
                                 </select>
                         }
