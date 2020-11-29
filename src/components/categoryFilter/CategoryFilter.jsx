@@ -15,7 +15,7 @@ export default function CategoryFilter({ posts, handleFilterChange }) {
 
                     <p
                         className='category-button'
-                        key={i} value={category}
+                        key={i}
                         onClick={handleFilterChange}
                         data-category={category}
                     >{category}</p>
