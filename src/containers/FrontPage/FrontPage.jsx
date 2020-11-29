@@ -15,6 +15,10 @@ export default function FrontPage() {
         setPostFilter(e.target.dataset.category)
     }
 
+    const handleFilterSelectChange = e => {
+        setPostFilter(e.target.value)
+    }
+
     const handleSortChange = e => {
         setSortType(e.target.value)
     }
@@ -30,7 +34,11 @@ export default function FrontPage() {
     }
     return (
         <div style={style} >
-            <CategoryFilter posts={posts} handleFilterChange={handleFilterChange} />
+            <CategoryFilter
+                posts={posts}
+                handleFilterChange={handleFilterChange}
+                handleFilterSelectChange={handleFilterSelectChange}
+            />
             <PostSort handleSortChange={handleSortChange} />
             <PostsList
                 posts={posts}
