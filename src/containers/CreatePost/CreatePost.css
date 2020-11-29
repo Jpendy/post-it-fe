@@ -1,15 +1,24 @@
+* {
+    box-sizing: border-box;
+}
 
 .create-post-form-area {
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.create-post-form-area input, .create-post-form-area select, .create-post-form-area option {
+    font-family: verdana, arial, helvetica, sans-serif;
+
+}
+
 .create-post-form-textarea {
     margin: 5px;
     height: 100px;
+    font-family: verdana, arial, helvetica, sans-serif;
 }
 
 .create-post-form {
@@ -22,6 +31,7 @@
 .create-post-form-input {
     height: 25px;
     margin: 5px;
+
 }
 
 .create-post-button {
@@ -29,4 +39,34 @@
     width: 60px;
     align-self: center;
     cursor: pointer;
+}
+
+.create-post-preview-area {
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid black;
+    background: #ffffff;
+    width: 40%;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-post-preview-area > img {
+    width: 400px;
+    
+}
+
+.create-post-preview-area > p {
+    padding: 5px;
+    width: 400px;
+    border: 1px solid lightgrey;
+    text-align: center;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+.create-post-preview-area > h3 {
+    font-family: verdana, arial, helvetica, sans-serif;
 }
