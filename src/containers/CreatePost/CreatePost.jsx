@@ -52,7 +52,7 @@ export default function CreatePost() {
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         {
                             createCategory
-                                ? <input ref={categoryInput} maxLength={15} style={{ width: '200px' }} className='create-post-form-input' placeholder='category' onChange={e => setCategory(e.target.value)} />
+                                ? <input ref={categoryInput} minLength={3} maxLength={15} style={{ width: '200px' }} className='create-post-form-input' placeholder='category' onChange={e => setCategory(e.target.value)} />
                                 : <select style={{ width: '387px' }} className='create-post-form-input' onChange={e => setCategory(e.target.value)}>
                                     <option value='none' >category - required</option>
                                     {categories.map((category, i) => <option key={i} >{category}</option>)}
@@ -61,7 +61,7 @@ export default function CreatePost() {
                         <span><button style={{ height: '25px', cursor: 'pointer' }} type='button' onClick={handleClick} >{createCategory ? 'Choose Category' : 'Add Category'}</button></span>
                     </div>
 
-                    <input className='create-post-form-input' placeholder='image url - optional' style={{ display: 'block' }} onChange={e => setImage(e.target.value)} />
+                    <input className='create-post-form-input' placeholder='image / gif url - optional' style={{ display: 'block' }} onChange={e => setImage(e.target.value)} />
                     <input className='create-post-form-input' placeholder='video url - optional' style={{ display: 'block' }} onChange={e => setVideo(e.target.value)} />
                     <textarea className='create-post-form-textarea' placeholder='text body - optional' style={{ display: 'block' }} onChange={e => setBody(e.target.value)} />
                     <button className='create-post-button' >Submit</button>
