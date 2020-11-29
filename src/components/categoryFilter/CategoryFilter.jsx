@@ -21,8 +21,10 @@ export default function CategoryFilter({ posts, handleFilterChange, handleFilter
                 ))
                     .slice(0, 10)
                 }
-                <select className='category-dropdown' onChange={handleFilterSelectChange} >
-                    <option value='' >All Categories</option>
+                <select label='more' placeholder='categories' className='category-dropdown' onChange={handleFilterSelectChange} >
+
+                    <option selected disabled hidden placeholder='More Categories' >More Categories</option>
+                    <option value='' >All </option>
                     {categories.map((category, i) => <option key={i} value={category} >{category}</option>)}
                 </select>
             </div>

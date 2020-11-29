@@ -46,7 +46,7 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
                                 data-category={item.category}
                                 className='category'
                             >
-                                &nbsp;- {item.category}</span>
+                                {item.category}</span>
 
                         </div>
 
