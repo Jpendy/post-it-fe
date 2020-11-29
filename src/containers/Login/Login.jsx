@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useLogin, useAuthError } from '../../hooks/AuthContext';
+import './Login.css'
 
 export default function Login() {
     const login = useLogin();
@@ -14,7 +15,8 @@ export default function Login() {
     }
 
     return (
-        <div>
+        <div className='login-area'>
+            <img src='/postr-logo2.png' alt='' />
             <form onSubmit={handleSubmit} >
                 {error && <p style={{ color: 'red' }} >{`${error.error}`}</p>}
                 <input placeholder='username' onChange={({ target }) => setEmail(target.value)} />

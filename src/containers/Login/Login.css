@@ -1,5 +1,5 @@
 
-.sign-up-area {
+.login-area {
     width: 50%;
     margin: auto;
     padding: 20px;
@@ -9,7 +9,7 @@
 
 }
 
-.sign-up-area, .sign-up-area form {
+.login-area, .login-area form {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
     align-items: center;
 }
 
-.sign-up-area input {
+.login-area input {
     height: 30px;
     width: 250px;
     margin: 10px;
@@ -26,7 +26,7 @@
 
 }
 
-.sign-up-area button {
+.login-area button {
     margin: 10px;
     height: 30px;
     width: 60px;
