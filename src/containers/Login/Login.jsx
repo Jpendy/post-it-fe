@@ -20,7 +20,7 @@ export default function Login() {
             <form onSubmit={handleSubmit} >
                 {error && <p style={{ color: 'red' }} >{`${error.error}`}</p>}
                 <input placeholder='username' onChange={({ target }) => setEmail(target.value)} />
-                <input placeholder='password' onChange={({ target }) => setPassword(target.value)} />
+                <input type='password' placeholder='password' onChange={({ target }) => setPassword(target.value)} />
                 <button>submit</button>
             </form>
         </div>
