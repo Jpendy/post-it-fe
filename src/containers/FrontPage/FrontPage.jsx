@@ -11,7 +11,6 @@ export default function FrontPage() {
 
     const { posts, voteHistory, handleVoteClick } = usePosts('ALL_POSTS')
 
-    console.log(posts)
     const handleFilterChange = e => {
         setPostFilter(e.target.dataset.category)
     }
@@ -34,6 +33,7 @@ export default function FrontPage() {
                 posts={posts}
                 handleVoteClick={handleVoteClick}
                 postFilter={postFilter}
+                handleFilterChange={handleFilterChange}
                 sortType={sortType}
                 voteHistory={voteHistory}
             // upVoteStyle={upVoteStyle}

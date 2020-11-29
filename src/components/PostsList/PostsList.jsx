@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useActiveUser } from '../../hooks/AuthContext'
 import './PostsList.css'
 
-export default function PostsList({ posts, postFilter, sortType, handleVoteClick, voteHistory }) {
+export default function PostsList({ posts, postFilter, sortType, handleVoteClick, voteHistory, handleFilterChange }) {
 
     const activeUser = useActiveUser()
     const [closedPosts, setClosedPosts] = useState([])
@@ -30,7 +30,14 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
                         <Link to={`/post-details/${item.id}`} >
                             <h2 className='post-title' >{item.title} </h2>
                         </Link>
-                        <span className='category' >&nbsp;- {item.category}</span>
+
+                        <span
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleFilterChange}
+                            data-category={item.category}
+                            className='category'
+                        >
+                            &nbsp;- {item.category}</span>
 
                     </div>
 
