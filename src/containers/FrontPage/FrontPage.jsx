@@ -11,23 +11,29 @@ export default function FrontPage() {
 
     const { posts, voteHistory, handleVoteClick } = usePosts('ALL_POSTS')
 
-    console.log(posts)
     const handleFilterChange = e => {
-        setPostFilter(e.target.value)
+        setPostFilter(e.target.dataset.category)
     }
 
     const handleSortChange = e => {
         setSortType(e.target.value)
     }
 
+    const style = {
+        margin: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    }
     return (
-        <div>
+        <div style={style} >
             <CategoryFilter posts={posts} handleFilterChange={handleFilterChange} />
             <PostSort handleSortChange={handleSortChange} />
             <PostsList
                 posts={posts}
                 handleVoteClick={handleVoteClick}
                 postFilter={postFilter}
+                handleFilterChange={handleFilterChange}
                 sortType={sortType}
                 voteHistory={voteHistory}
             // upVoteStyle={upVoteStyle}

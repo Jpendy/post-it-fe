@@ -1,5 +1,12 @@
 
+.post-list-area {
+    width: 100%;
+   margin: auto;
+   text-align: center;
+}
+
 .post-list {
+    margin: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -10,11 +17,28 @@
 }
 
 .list-item {
-    background: lightblue;
+    background:  #E7E3D4;
     margin: 20px;
-    width: 70%;
-    min-width: 300px;
+    width: 50%;
+    min-width: 420px;
     border: 1px solid black;
+    box-shadow: 1px 1px 3px;
+    font-family: verdana, arial, helvetica, sans-serif;
+}
+
+.list-item a {
+    text-decoration: none;
+    color: #c23104
+}
+
+.list-item .image {
+    width: 400px;
+}
+
+.list-item iframe {
+    height: 400px;
+    /* width: 400px; */
+    border: 0px inset 
 }
 
 .vote-area {
