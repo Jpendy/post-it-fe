@@ -4,6 +4,7 @@ import CategoryFilter from '../../components/categoryFilter/CategoryFilter';
 import PostsList from '../../components/PostsList/PostsList';
 import PostSort from '../../components/postSort/PostSort';
 import usePosts from '../../hooks/usePosts';
+import './UserPosts.css'
 
 export default function UserPosts() {
     const [postFilter, setPostFilter] = useState('')
@@ -21,7 +22,7 @@ export default function UserPosts() {
     }
 
     return (
-        <div>
+        <div className='user-posts-area' >
             <CategoryFilter posts={posts} handleFilterChange={handleFilterChange} />
             <PostSort handleSortChange={handleSortChange} />
 

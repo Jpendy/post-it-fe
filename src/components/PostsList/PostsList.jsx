@@ -35,7 +35,7 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
                 <>
                     <li key={i} className='list-item' >
 
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
                             <Link to={`/post-details/${item.id}`} >
                                 <h2 className='post-title' >{item.title} </h2>
                             </Link>
@@ -86,9 +86,12 @@ export default function PostsList({ posts, postFilter, sortType, handleVoteClick
 
                         <details className='post-details' open={!allPostsClosed}>
 
+
+
                             <img className='image' src={item.image} alt='' />
                             <summary onClick={() => handleOpenDetails(item.id)} style={{ cursor: 'pointer', fontSize: '8px' }} >
-                                {closedPosts.includes(item.id) ? 'Expand' : 'Hide'}
+                                <img className='leo' src={closedPosts.includes(item.id) ? '/open-icon.png' : '/x-close.png'} alt='' />
+                                {/* {closedPosts.includes(item.id) ? 'Expand' : 'Hide'} */}
                             </summary>
                             {item.video && <iframe className='video' title='video' src={item.video} />}
                             <p>{item.body}</p>

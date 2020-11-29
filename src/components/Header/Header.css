@@ -1,5 +1,5 @@
 .header-body {
-    height: 70px;
+    height: 80px;
     padding: 0px 25px;
     background: #E7E3D4;
     border-bottom: 1px initial black;
@@ -12,8 +12,18 @@
 
 }
 
-.header-body > button {
-    font-size: 10px;
+.logo-link {
+    width: 10%;
+    min-width: 100px;
+}
+
+.logo-link .logo {
+    width: 100%;
+}
+
+.header-right-area > button {
+    margin-left: 5px;
+    min-width: 65px;
     background: #3B8BEB;
     height: 29px;
     font-size: 12px;
@@ -27,6 +37,7 @@
 }
 
 .link-buttons {
+    margin-left: 6%;
     display: flex;
 }
 
@@ -48,19 +59,25 @@
     transition: 0.2s ease-in-out;
 }
 
-.header-body > button:hover, .link-buttons > a:hover {
+.header-right-area > button:hover, .link-buttons > a:hover {
 background: rgb(83, 83, 248);
 box-shadow: 2px 2px 4px black;
 }
 
-.header-body > button:active, .link-buttons > a:active {
+.header-right-area > button:active, .link-buttons > a:active {
     transform: scale(0.95);
     background: rgb(83, 83, 248);
     box-shadow: 2px 2px 4px black;
     }
     
 .username-link {
+    margin-right: 10px;
+    float: right;
     text-decoration: none;
-    color: #c23104
-
+    color: #c23104;
 }    
+
+.header-right-area {
+    display: flex;
+    align-items: center;
+}
