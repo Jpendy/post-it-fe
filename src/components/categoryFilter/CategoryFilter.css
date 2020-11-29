@@ -12,14 +12,14 @@
     font-size: 12px;
     text-align: center;
     margin: 10px;
-    width: 100px;
+    padding: 12px;
     height: 35px;
     border: 1px solid black;
     border-radius: 2px;
     box-shadow: 1px 1px 2px black;
     background: #3B8BEB;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.2s ease-in-out; 
     color: #ffffff;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -28,7 +28,13 @@
 }
 
 .category-button:hover {
-    background: lightskyblue;
+    background: rgb(83, 83, 248);
+    box-shadow: 2px 2px 6px black;
+}
+
+.category-button:active {
+    transform: scale(0.97);
+    background: rgb(83, 83, 248);
     box-shadow: 2px 2px 6px black;
 }
 

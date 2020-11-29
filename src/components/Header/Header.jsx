@@ -18,10 +18,14 @@ export default function Header() {
 
         : (
             <div className='header-body' >
-                <h3>Hello {activeUser.email}</h3>
-                <Link to='/' >Front Page</Link>
-                <Link to='/create-post' >New Post</Link>
-                <Link to={`/user-posts/${activeUser.id}`} >My Posts</Link>
+
+                <Link className='username-link' to='/' ><h3>Hello {activeUser.email}</h3></Link>
+                <div className='link-buttons' >
+                    <Link to='/' >Front Page</Link>
+                    <Link to='/create-post' >New Post</Link>
+                    <Link to={`/user-posts/${activeUser.id}`} >My Posts</Link>
+                </div>
+
                 <button onClick={logout} >Log Out</button>
             </div>
         )

@@ -36,8 +36,8 @@
 }
 
 .list-item iframe {
-    height: 228px;
-    width: 400px;
+    height: 400px;
+    /* width: 400px; */
     border: 0px inset 
 }
 

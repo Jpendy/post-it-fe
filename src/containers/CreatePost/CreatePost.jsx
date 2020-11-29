@@ -52,7 +52,7 @@ export default function CreatePost() {
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         {
                             createCategory
-                                ? <input ref={categoryInput} style={{ width: '200px' }} className='create-post-form-input' placeholder='category' onChange={e => setCategory(e.target.value)} />
+                                ? <input ref={categoryInput} maxLength={15} style={{ width: '200px' }} className='create-post-form-input' placeholder='category' onChange={e => setCategory(e.target.value)} />
                                 : <select style={{ width: '387px' }} className='create-post-form-input' onChange={e => setCategory(e.target.value)}>
                                     <option value='none' >category - required</option>
                                     {categories.map((category, i) => <option key={i} >{category}</option>)}
@@ -71,8 +71,9 @@ export default function CreatePost() {
 
             {(title || category || image || video || body) &&
                 <div className="create-post-preview-area" >
-                    {title && <h3>Title: {title}</h3>}
-                    {category && <p>Category: {category}</p>}
+                    Preview:
+                    {title && <h3>{title}</h3>}
+                    {category && <p>{category}</p>}
                     {image && <img src={image} alt='' />}
                     {video && <iframe src={video} title='title' />}
                     {body && <p>{body}</p>}
