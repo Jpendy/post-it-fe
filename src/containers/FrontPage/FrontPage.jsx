@@ -20,10 +20,13 @@ export default function FrontPage() {
     }
 
     const style = {
-        margin: 'auto',
+        // margin: 'auto',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
+        textAlign: 'center'
     }
     return (
         <div style={style} >
