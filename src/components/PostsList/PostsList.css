@@ -37,7 +37,7 @@
 }
 
 .list-item iframe {
-    height: 400px;
+    height: 200px;
     /* width: 400px; */
     border: 0px inset 
 }
@@ -58,8 +58,16 @@
 
 summary {
     list-style: none;
-    width: 6%;
-    margin: 20px auto 0px auto;
+    width: 3%;
+    margin-left: 10%;
+    /* margin: 20px auto 0px auto; */
+
+}
+
+.detail-open {
+    width: 15px;
+    height: 15px;
+    background: rgb(4, 231, 4);
 }
 
 .summary-image {
@@ -71,6 +79,11 @@ summary {
 .delete-button {
     margin: 10px;
     cursor: pointer;
+}
+
+.leo {
+    width: 15px;
+    height: 15px
 }
 
 summary::-webkit-details-marker {display: none; }
