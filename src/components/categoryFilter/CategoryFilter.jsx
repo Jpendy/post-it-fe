@@ -1,7 +1,7 @@
 import React from 'react'
 import './CategoryFilter.css'
 
-export default function CategoryFilter({ posts, handleFilterChange }) {
+export default function CategoryFilter({ posts, handleFilterChange, handleFilterSelectChange }) {
 
     const categories = [...new Set(posts.map(item => item.category))]
 
@@ -12,7 +12,6 @@ export default function CategoryFilter({ posts, handleFilterChange }) {
                 <p onClick={handleFilterChange} data-category='' className='category-button' >All</p>
 
                 {categories.map((category, i) => (
-
                     <p
                         className='category-button'
                         key={i}
@@ -22,9 +21,9 @@ export default function CategoryFilter({ posts, handleFilterChange }) {
                 ))
                     .slice(0, 10)
                 }
-                <select className='category-dropdown' onChange={handleFilterChange} >
+                <select className='category-dropdown' onChange={handleFilterSelectChange} >
                     <option value='' >All Categories</option>
-                    {categories.map((category, i) => <option key={i} data-category={category} >{category}</option>)}
+                    {categories.map((category, i) => <option key={i} value={category} >{category}</option>)}
                 </select>
             </div>
 
