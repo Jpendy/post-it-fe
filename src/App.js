@@ -11,6 +11,7 @@ import FrontPage from './containers/FrontPage/FrontPage';
 import Login from './containers/Login/Login';
 import Signup from './containers/Signup/Signup';
 import AuthProvider from './providers/AuthProvider';
+import AppProvider from './providers/AppProvider'
 import './App.css'
 import UserPosts from './containers/userPosts/UserPosts';
 
@@ -19,15 +20,19 @@ function App() {
     <div>
       <Router>
         <AuthProvider>
-          <Header />
-          <Switch>
-            <Route exact path='/' component={FrontPage} />
-            <Route exact path='/signup' component={Signup} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/post-details/:id' component={Details} />
-            <Route exact path='/user-posts/:userId' component={UserPosts} />
-            <PrivateRoute exact path='/create-post' component={CreatePost} />
-          </Switch>
+          <AppProvider >
+
+            <Header />
+            <Switch>
+              <Route exact path='/' component={FrontPage} />
+              <Route exact path='/signup' component={Signup} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/post-details/:id' component={Details} />
+              <Route exact path='/user-posts/:userId' component={UserPosts} />
+              <PrivateRoute exact path='/create-post' component={CreatePost} />
+            </Switch>
+
+          </AppProvider>
         </AuthProvider>
       </Router>
 
